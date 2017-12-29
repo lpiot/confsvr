@@ -23,4 +23,4 @@ env:
 script:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 - mvn clean package docker:build
-- docker push anthonydenecheau/scc-confsvr:version1.0
+- docker push $SCC_DOCKER_IMAGE
