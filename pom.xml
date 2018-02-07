@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>Config Server</name>
-  <description>Config Server Agria project</description>
+  <description>Config Server project</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
