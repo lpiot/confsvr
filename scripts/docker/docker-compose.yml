@@ -2,12 +2,18 @@ configserver:
   restart: always
   image:   anthonydenecheau/scc-confsvr:${BUILD_NAME}
   mem_limit: 1000000000
-  external_links:
-    - localhost:eurekaserver
   ports:
     - "8888:8888"
+  networks:
+    - net    
+  hostname: configserver
+  container_name: configserver
   environment:
     EUREKASERVER_PORT: 8761
     EUREKA_INSTANCE_HOSTNAME: configserver
     EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-    ENCRYPT_KEY:       "IMSYMMETRIC"    
+    ENCRYPT_KEY:       "IMSYMMETRIC"
+    
+networks:
+  net:
+    driver: bridge

@@ -1,5 +1,4 @@
 #!/bin/sh
-#!/bin/sh
 getPort() {
     echo $1 | cut -d : -f 3 | xargs basename
 }
