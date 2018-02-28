@@ -7,6 +7,7 @@ configserver:
   ports:
     - "8888:8888"
   environment:
+    EUREKASERVER_PORT: 8761
     EUREKA_INSTANCE_HOSTNAME: configserver
     EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
     ENCRYPT_KEY:       "IMSYMMETRIC"    
