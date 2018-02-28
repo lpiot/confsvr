@@ -1,0 +1,14 @@
+configserver:
+  container_name: configserver
+  dns: 8.8.8.8
+  restart: always
+  image:   anthonydenecheau/scc-confsvr:${BUILD_NAME}
+  mem_limit: 1000000000
+  links:
+    - eurekaserver
+  ports:
+    - "8888:8888"
+  environment:
+    EUREKA_INSTANCE_HOSTNAME: configserver
+    EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+    ENCRYPT_KEY:       "IMSYMMETRIC"    
