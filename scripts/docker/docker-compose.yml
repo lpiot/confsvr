@@ -1,11 +1,9 @@
 configserver:
-  container_name: configserver
-  dns: 8.8.8.8
   restart: always
   image:   anthonydenecheau/scc-confsvr:${BUILD_NAME}
   mem_limit: 1000000000
-  links:
-    - eurekaserver
+  external_links:
+    - localhost:eurekaserver
   ports:
     - "8888:8888"
   environment:
