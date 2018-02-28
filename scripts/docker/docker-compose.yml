@@ -4,8 +4,6 @@ configserver:
   mem_limit: 1000000000
   ports:
     - "8888:8888"
-  networks:
-    - net    
   hostname: configserver
   container_name: configserver
   environment:
@@ -13,7 +11,4 @@ configserver:
     EUREKA_INSTANCE_HOSTNAME: configserver
     EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
     ENCRYPT_KEY:       "IMSYMMETRIC"
-    
-networks:
-  net:
-    driver: bridge
+   
