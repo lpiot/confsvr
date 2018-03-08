@@ -24,13 +24,21 @@ env:
   - secure: LW9sDXo1ZutGPsBTeVt+esQGvj/eyAUBHQudXMSYXcBm/a3MbYYSB1t010oAEKQgBtqxZk3qyigqK6SSKFwhfvjK0K9dcV8Zu4Srp+Zrw/UnoWCx47KXp0eTo9AvWhn86dLvBkUBzELzgqe/2iloy3eNp2l/gDsTBBEnpBM7VLapyqPE1nXzNVrJI1qANNEV1JfdUSI2f+/B589FYW8ZeMpqPm7748YTwPQ+laJ0n4v6y71hiA1CXxasNduwOVZPx9E6jhYXJ8tlKCRCZorR0zAwYW21LZx8/lJBFHYNxo8FroTGznAGNWDsuHTDSl7DQX6xvnf09XcXSTKhrR1YHQ+LsbqrtVPfjDhdlOvNrqFCYmh8HGBsBxEattiNwpvm4iLUET10yRcGGVYHAIqbriICMGAe3HoFF5n+XjjrTV3Kf3d/8Lhvg1Ko7EOTkAq62J75vRt2LIGtpxOqBuaPdpPyvGcqeVpWSpcVFbpzJGR08r3PaD5dNAR5DdrBUasBGNANtzsCb4jPuHyZxmlVv14CGObBNtHRhu7vqEOm7a+c3NL6S4+jeFdIEvGa5mN1tGyxUm7nJXUIHE/KioBS1CZ14ovGNZOBDm4Ci7fB7C3NxarrazMSRTRE6x4yoD60hAd7Rc0zeTMHjBJo3pwio1GGGV5Gnd4nx4RqkDgBK9o=
   - secure: ZaAZedGyiRNGbAJ3Z5n9yx7csmUyBw8F0gUOA+CypLKSGUQo7eldnmtoDFdPim6MHM1FzE6wx+hhg5nnRVF1SZqbg4Q41Yu0YEBIZixekIWZSZQ+Xw92+8X6iy/HjEljtlIAlqs+6VK7syYTiQ5oMxK0n+7IwT+byRi6x3bVJ7mH4iufkzcytC9YHZDTCS3O0Q2VU5jeIb9px8eUPamDwn+aat0R+k8DkAaAxATC+vC4NgK3lBnTUqI06URrEMh2qAiWiAF2hTAzvpU0dsNHLpYGQO8FE5luN+fSQDZtt5YSAEBe/YxhkEoV8VuswRec/ROzb/nVrkRMB2B8Miic0rFYOgas8ddmh0nyJaSHXvMYScop4WbVIWvlkYlqOcyQ59nf8UCSlKFT7rbXbMf3Tv7hhlv+Hn/+aqW/5gqq/SIKli2cQRdiRA9jYXAhoi6Bk6/nxqwyNozfyNJeP28wXCijj3fFIL7D40HY8yaqpLFXrOVxORk5LQpU6iCK/Vi6F++0M8rUawQFKOTN/r4fyQCSoDxitRqP3PE5wdfNXg4qiibAWo17/FO9vtzKyFH18JKNhFBgEP6+SEeBQMH16sFD84N+6jjCiCZ2lUMX0jP4oQNkLVysFm+VhEW49YNhbfSYEVU2hLtU0GBSlhiItRLfuRInEEuRw+AhnHW9ZLI=
   - secure: BYLPubF1AltO6jYNaLdIPuul09qDmZTe6gzyN+4UR4DBTxho9WKSppfYrjdsH+YzUiY1e86tT49lC3WqwR5zVrWeBR7wPGWH8tiP8rksxmvHzbehmuEZP213c/pqyy8bnoLmd27JYSTfD5JQWypr2YLgjtoeSb31yBo2WXrM3OZCbFi+ewTIH+AZiFHfxHWIZWuWHMVM/WQYb8rkVyrNGfSuFOZKLjmfcHNhVklr3SGcbVTfVUqwpc/rGKTheIB+vXjAo+e2eoQysZAqYsQgkbC0kWqdQF4XohtbJb6nPau3Mj+7NIhWFxowq7WVoy/MqtJoAyh9bz4sioWQm5cPCHjR72q9QBxO6rWu4Lpozc0nJpHynY7PaG6HshvcjHXU2deyf6P0cU6Y4+Mg5iIjPPkIf9Br0pd+CLqAk6B96EsxIdgvs2NNGJRaw+M8vS8kfRJfZPEArJ7oL1eGMQtHLzn6JcEEDd2s29WlcfJRL9R8PWlp4OG7BOBOaa5edFVOc4vyl9uReOLy7eIAgLzl5aCSlbne0mQDVfedKPHCQBepub3NDfwjjxpvRw0CYMDKQy/dx86nQyfwLSZluyXJx4goL8zWEEqkDxgtJp8eH7KcKCLzpCioUXRtLkZqs0C9zDgQ4cbQQY30nKfNOoQd4dQ6put95A1keKQ19B/pTEo=
-before_install:
-- gem install travis -v 1.8.5 --no-rdoc --no-ri
-- sudo curl -k -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
-- sudo chmod +x /usr/local/bin/ecs-cli
-- export BUILD_NAME=confsvr-$TRAVIS_BRANCH-$(date -u "+%Y%m%d%H%M%S")-$TRAVIS_BUILD_NUMBER
+  matrix:
+  - SCC_DOCKER_IMAGE=anthonydenecheau/scc-agria-service:version1.0
 script:
-- sh scripts/travis/tag_build.sh
-- sh scripts/travis/build_services.sh
-- sh scripts/travis/deploy_to_docker_hub.sh
-- sh scripts/travis/deploy_to_amazon_ecs.sh
+- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+- mvn clean package docker:build
+- docker push $SCC_DOCKER_IMAGE
+
+#AWS desactive
+#before_install:
+#- gem install travis -v 1.8.5 --no-rdoc --no-ri
+#- sudo curl -k -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
+#- sudo chmod +x /usr/local/bin/ecs-cli
+#- export BUILD_NAME=confsvr-$TRAVIS_BRANCH-$(date -u "+%Y%m%d%H%M%S")-$TRAVIS_BUILD_NUMBER
+#script:
+#- sh scripts/travis/tag_build.sh
+#- sh scripts/travis/build_services.sh
+#- sh scripts/travis/deploy_to_docker_hub.sh
+#- sh scripts/travis/deploy_to_amazon_ecs.sh
