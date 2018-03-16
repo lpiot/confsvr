@@ -17,6 +17,6 @@ spring:
         encrypt.enabled: false
         git:
           uri: https://github.com/anthonydenecheau/config-repo
-          searchPaths: agriaservice, zuulservice, onlinedogshowservice, agriadaemon, onlinedogshowdaemon, dogservice, judgeservice, showservice
+          searchPaths: agriaservice, zuulservice, onlinedogshowservice, agriadaemon, onlinedogshowdaemon, dogservice, judgeservice, showservice, dogdaemon
           username: anthonydenecheau
           password: JneSp@EPmMdp155
