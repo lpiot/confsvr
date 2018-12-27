@@ -9,7 +9,7 @@ import com.scc.confsvr.ConfigServerApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ConfigServerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ApplicationTest {
+public class ConfigServerApplicationTest {
 
 	@Test
 	public void contextLoads() {
