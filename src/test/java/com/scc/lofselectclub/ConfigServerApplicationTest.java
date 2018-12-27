@@ -14,4 +14,5 @@ public class ConfigServerApplicationTest {
 	@Test
 	public void contextLoads() {
 	}
+	
 }
