@@ -3,24 +3,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.scc</groupId>
-  <artifactId>configurationserver</artifactId>
+  <artifactId>confsvr</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Config Server</name>
+  <name>confsvr</name>
   <description>Config Server project</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.4.RELEASE</version>
+	<version>2.1.2.RELEASE</version>
   </parent>
+  
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Camden.SR5</version>
+        <version>${spring-cloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -31,11 +32,6 @@
     <dependency>
       	<groupId>org.springframework.cloud</groupId>
       	<artifactId>spring-cloud-config-server</artifactId>
-    </dependency>
-
-    <dependency>
-      	<groupId>org.springframework.cloud</groupId>
-      	<artifactId>spring-cloud-starter-config</artifactId>
     </dependency>
 
 	<!-- Test -->
@@ -50,9 +46,10 @@
   <!--Docker build Config-->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <start-class>com.scc.confsvr.ConfigServerApplication</start-class>
+    <start-class>com.scc.confsvr.Application</start-class>
     <java.version>1.8</java.version>
-    <docker.image.name>anthonydenecheau/scc-confsvr</docker.image.name>
+	<spring-cloud.version>Greenwich.RC2</spring-cloud.version>
+	<docker.image.name>anthonydenecheau/confsvr</docker.image.name>
 	<docker.image.tag>${env.BUILD_NAME}</docker.image.tag>
   </properties>
 
@@ -105,4 +102,12 @@
      </plugins>
  </build>
 
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+	
 </project>
