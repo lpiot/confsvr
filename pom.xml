@@ -52,7 +52,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <start-class>com.scc.confsvr.ConfigServerApplication</start-class>
     <java.version>1.8</java.version>
-    <docker.image.name>anthonydenecheau/scc-confsvr</docker.image.name>
+    <docker.image.name>lpiot/scc-confsvr</docker.image.name>
 	<docker.image.tag>${env.BUILD_NAME}</docker.image.tag>
   </properties>
 
